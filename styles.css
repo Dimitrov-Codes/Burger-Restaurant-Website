@@ -1,0 +1,76 @@
+*{
+    font-family: 'Montserrat', cursive;
+}
+h1,h2{
+    font-weight: 900;
+    text-align: center;
+}
+/* LANDING PAGE */
+#landing-page
+{   background-color: white;
+    background-image:-webkit-linear-gradient(0deg, white 50%,#f84c4c 50% );;
+    padding-bottom:11rem;
+}
+.navbar-items{
+    font-size: 1.2rem;
+    font-family: "Montserrat-Light";
+}
+#logo{
+    height:8rem;
+    border-radius: 50%;
+}
+#single-patty{
+    width: 98%;
+    height: auto;
+}
+.b-desc1{
+    color:yellow;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.b-desc2{
+    color:white;
+}
+
+/* menu */
+#menu{
+    background-color: #fbf8f8;
+}
+#specials{
+    color:red;
+    font-family:cursive;
+    text-align: center;
+}
+.card{
+    text-align: center;
+    box-shadow: 10px 5px 20px 0 rgb(151, 151, 151);
+    border-radius: 5%;
+}
+.burger{
+    width:50%;
+    height: auto;
+}
+/* Testimonials */
+#testimonials{
+    text-align: center;
+    background-color: #fd6d6d;
+    padding: 11rem 6rem;
+    color:white;
+    line-height: 1.5;
+
+}
+
+.testimonial-image{
+    border-radius: 100%;
+    width:9rem;
+    height: auto;
+    margin: 2rem 1rem;
+}
+/* Footer */
+#footer{
+    padding: 7% 15%;
+    text-align: center;
+}
+.social-icon {
+    margin: 20px 10px;
+  }
