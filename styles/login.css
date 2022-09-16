@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/login.jpg");
+    background-size: cover;
+}
+
+form{
+    margin-top: 2rem;
+}
+
+#logo{
+    width: 200px;
+    margin-bottom:1.3rem;
+}
+.ph{
+    font-size: 1.4rem;
+}
+.login-form, .signup-form{
+    width: 35vw;
+    position: absolute;
+    
+
+}
