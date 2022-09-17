@@ -1,22 +1,41 @@
 body {
     background-image: url("../images/login.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #464646;
 }
 
 form{
     margin-top: 2rem;
+    /* height: 100vh; */
+}
+h1{
+    font-size:3rem
 }
 
-#logo{
-    width: 200px;
+.logo{
+    max-width: 12.5rem;
+    
     margin-bottom:1.3rem;
 }
 .ph{
     font-size: 1.4rem;
 }
 .login-form, .signup-form{
-    width: 35vw;
+    width: 35%;
     position: absolute;
-    
+    height: 100vh;
+    overflow-y: scroll;
 
+}
+@media only screen and (max-width: 615px) {
+    .login-form, .signup-form{
+        width: 100%;
+    }
+    p{
+        display: block;
+        text-align: end;
+        margin: 1rem auto;
+    }
 }
