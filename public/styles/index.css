@@ -1,0 +1,125 @@
+*{
+    font-family: 'Montserrat', cursive;
+}
+h1,h2{
+    font-weight: 900;
+    text-align: center;
+}
+/* LANDING PAGE */
+#landing-page
+{   background-color: white;
+    background-image:-webkit-linear-gradient(0deg, white 50%,#f84c4c 50% );;
+    padding-bottom:11rem;
+}
+.navbar-items{
+    font-size: 1.2rem;
+    font-family: "Montserrat-Light";
+}
+#logo{
+    height:8rem;
+    
+}
+#single-patty{
+    width: 98%;
+    height: auto;
+}
+.b-desc1{
+    color:yellow;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.b-desc2{
+    color:white;
+}
+
+/* Menu */
+#specials{
+    color:red;
+    font-family:cursive;
+    text-align: center;
+}
+.menu, .menu-bill{
+    background-color: #f9f5f5;
+    
+}
+.card{
+    text-align: center;
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 2px 4px 0px;
+    border-radius: 5%;
+}
+.burger{
+    width:50%;
+    height: auto;
+}
+
+.menu-hr{
+    font-size: 1rem;
+    font-family: proxima-nova, sans-serif;
+    border-bottom: 1px solid rgb(76 76 76);
+    position: relative;
+    width: 97%;
+    top: 2.2rem;
+    z-index: 0;
+}
+
+.cat-bar{
+    font-size: 1rem;
+    font-family: proxima-nova, sans-serif;
+    background: rgb(255, 255, 255);
+    border-radius: 2rem;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin: .5rem 0px 1rem 1.8rem;
+    position: relative;
+    z-index: 1;
+}
+/* Testimonials */
+#testimonials{
+    text-align: center;
+    background-color: #fd6d6d;
+    padding: 11rem 6rem;
+    color:white;
+    line-height: 1.5;
+
+}
+
+.testimonial-image{
+    border-radius: 100%;
+    width:9rem;
+    height: auto;
+    margin: 2rem 1rem;
+}
+/* Footer */
+#footer{
+    padding: 7% 15%;
+    text-align: center;
+}
+.social-icon {
+    margin: 20px 10px;
+  }
+
+/* Cart */
+.cart{
+    background-color: #f84c4c;
+    
+}
+.cart-form{
+    background-color: rgb(242, 242, 242);
+    position: sticky;
+    top:11rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-top: 4px solid rgb(3, 190, 3);
+    padding: 10px;
+    
+}
+.cart i{
+    font-size: 2rem;
+}
+.item img{
+    max-height: 4.2rem;
+    position: relative;
+    top:-18px
+}
