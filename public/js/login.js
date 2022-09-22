@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $(".login-form").show();
     $(".signup-form").hide();
@@ -8,9 +9,15 @@ $(document).ready(function () {
 $("#l-link").click((e)=>{
     $(".login-form").fadeIn();
     $(".signup-form").fadeOut();
-    console.log(e);
 })
 $("#s-link").click((e)=>{
     $(".signup-form").fadeIn();
     $(".login-form").fadeOut();
 })
+
+// let phone;
+// let appVerifier;
+// $("#login").click((e)=>{
+//     phone = $("#phLogin").val();
+//     fetch("/auth?no=" + phone).then(r=>{return r.json()}).then(fetch("/"));
+// })

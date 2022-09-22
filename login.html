@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,50 +9,183 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap" rel="stylesheet">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/login.css">
-    
-    
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>
+
+
+
 
 </head>
+
 <body>
     <div class="login-form bg-white h-100">
         <img src="./images/logo.png" class="mx-auto pt-3 d-block logo">
         <h1 class="text-center">Welcome Back!</h1>
 
-        <form action="" class="ms-5 me-5">
-            <label for="phone" class="ph mb-2">Phone Number</label>
-            <input id="login" class="form-control form-control-lg mb-4" type="text">
+        <form id="login" class="ms-5 me-5">
+            <label for="email" class="ph mb-2">Email</label>
+            <input id="email" name="email" class="form-control form-control-lg mb-4" type="text" required>
+            <label for="password" class="ph mb-2">Password</label>
+            <input id="password" name="password" class="form-control form-control-lg mb-4" type="password" required>
 
-            <button id="login" class="btn btn-danger btn-lg px-5" type="submit">Login</button><p class="ms-5 link-secondary d-inline-block">Dont have an account? <a href="javascript: void(0)" id="s-link">sign up</a></p>
+            <div id="captcha" class="mb-2">
+
+            </div>
+            <button class="btn btn-danger btn-lg px-5">Log in</button>
+            <p class="ms-5 link-secondary d-inline-block">Dont have an account? <a href="javascript: void(0)"
+                    id="s-link">sign up</a></p>
         </form>
     </div>
     <div class="signup-form bg-white">
         <img src="./images/logo.png" class="mx-auto pt-3 d-block logo">
         <h1 class="text-center text-lg-center">Welcome!</h1>
 
-        <form action="" class="ms-5 me-5 pb-auto">
+        <form id="signup" class="ms-5 me-5 pb-auto">
 
-            
             <label for="name" class="ph mb-2">Name</label>
-            <input class="form-control form-control-lg mb-4" type="text">
+            <input class="form-control form-control-lg mb-4" name="name" type="text" required>
+
+            <label for="email" class="ph mb-2">Email</label>
+            <input class="form-control form-control-lg mb-4" name="email" type="text" required>
+
+            <label for="password" class="ph mb-2">Password</label>
+            <input class="form-control form-control-lg mb-4" name="password" type="password" required>
+            <div id="captcha" class="mb-2"></div>
+
+            <label for="address" class="ph mb-2">Address</label>
+            <input class="form-control form-control-lg mb-4" name="address" type="text" required>
 
 
-            <label for="Address" class="ph mb-2">Address</label>
-            <input class="form-control form-control-lg mb-4" type="text">
 
-
-            <label for="phone" class="ph mb-2">Phone Number</label>
-            <input class="form-control form-control-lg mb-4" type="text">
-
-            <button id="signup" class="btn btn-danger btn-lg px-5" type="submit">Sign up</button><p class="ms-5 d-inline-block link-secondary">Have an account? <a href="javascript: void(0)" id="l-link">Login</a></p>
+            <button class="btn btn-danger btn-lg px-5" type="submit">Sign up</button>
+            <p class="ms-5 d-inline-block link-secondary">Have an account? <a href="javascript: void(0)"
+                    id="l-link">Login</a></p>
         </form>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyDBbYqxTrmkp-lIZ3RpPAakDkq-yCtKhro",
+                authDomain: "brrrgrrr-30225.firebaseapp.com",
+                databaseURL: "https://brrrgrrr-30225-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "brrrgrrr-30225",
+                storageBucket: "brrrgrrr-30225.appspot.com",
+                messagingSenderId: "1025505294372",
+                appId: "1:1025505294372:web:42ea9791e2a12c2ead00b1",
+                measurementId: "G-6BEXHLB17H"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            // Initialize Firebase Authentication and get a reference to the service
+            const auth = getAuth(app);
+
+            // auth.setPersistence(auth.Auth.Persistence.NONE);
+
+            window.addEventListener("DOMContentLoaded", () => {
+
+                document
+                    .getElementById("login")
+                    .addEventListener("submit", (event) => {
+                        console.log("clicked");
+                        event.preventDefault();
+                        const email = event.target.email.value;
+                        const password = event.target.password.value;
+                        console.log(email + " " + password);
+                        signInWithEmailAndPassword(auth, email, password)
+                            .then(({ user }) => {
+                                // console.log(JSON.parse(user))
+                                return user.getIdToken().then((idToken) => {
+                                    console.log(JSON.stringify({ idToken }))
+                                    return fetch("/sessionLogin", {
+                                        method: "POST",
+                                        headers: {
+                                            Accept: "application/json",
+                                            "Content-Type": "application/json",
+                                            "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                                        },
+                                        body: JSON.stringify({ idToken }),
+                                    });
+                                });
+                            })
+                            .then(() => {
+                                return auth.signOut();
+                            })
+                            .then(() => {
+                                window.location.assign("/profile");
+                            });
+                        return false;
+                    });
+
+            });
+
+
+            document
+                .getElementById("signup")
+                .addEventListener("submit", (event) => {
+                    console.log("clicked");
+                    event.preventDefault();
+                    const email = event.target.email.value;
+                    const password = event.target.password.value;
+                    const address = event.target.address.value;
+                    const name = event.target.name.value;
+                    console.log(email + " " + password + " " + address + " " + name);
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed in 
+                            const user = userCredential.user;
+                            // console.log(user);
+
+                            return user.getIdToken().then((idToken) => {
+                                console.log({ idToken: idToken, name: name, address: address, uid: user.uid })
+                                return fetch("/sessionLogin", {
+                                    method: "POST",
+                                    headers: {
+                                        // Accept: "application/json",
+                                        "Content-Type": "application/json",
+                                        "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                                    },
+                                    // body: JSON.stringify({ idToken }),
+                                    body: JSON.stringify({ idToken: idToken, name: name, address: address, uid: user.uid }),
+                                });
+                            });
+                        })
+                        .then(() => {
+                            return auth.signOut();
+                        })
+                        .then(() => {
+                            window.location.assign("/profile");
+                        });
+                    return false;
+                });
+
+        </script>
         <script type="text/javascript" src="./js/login.js"></script>
-    
-    </body>
+
+</body>
+
 </html>

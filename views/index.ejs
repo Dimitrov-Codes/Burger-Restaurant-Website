@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRRRGRRR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+  <section id="landing-page">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand ms-4" href="#"><img id="logo" src="./images/logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav navbar-items ms-4">
+          <a class="nav-item nav-link" href="/">Home</a>
+          <a class="nav-item nav-link text-danger" href="#menu">Menu</a>
+          <a class="nav-item nav-link text-danger" href="order">Order Now</a>
+          <a class="nav-item nav-link text-danger" href="login">Login</a>
+        </div>
+        <div>
+          <!-- <%if login -->
+          <img id="userImage" src="" alt="">
+          <p id="username" class="text-light me-5">Your Name</p>
+          <p id="userph" class="text-light me-5">Your Number</p>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <h1>
+            Single Patty
+          </h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo autem at ab? Magnam natus facilis facere sed.
+            Exercitationem veniam </p>
+          <button class="btn btn-danger">Order Now</button>
+        </div>
+        <div class="col-md-4">
+          <img id="single-patty" src="./images/LandingImage-Burger.png">
+        </div>
+        <div class="col-md-4 mt-5">
+          <p class="b-desc1">Sassy Burger</p>
+          <p class="b-desc2">Our best selling saucy burger</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="menu" class="mb-5 pb-5 pt-5">
+    <p id="specials">Our specials</p>
+    <h1>Dine In + Delivery</h1>
+    <div class="container mb-5 mt-5">
+      <div class="row">
+        <div class="col-lg-4 ">
+          <div class="card h-100">
+            <a href="#" class="mt-2">
+              <img class="card-img-top burger" src="./images/Chicken-Cheese-Burger.png" alt="Card image cap">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Chicken Cheese Burger</h5>
+              <p class="card-text">Juicy chicken burger topped with cheddar cheese Dynamo sauce</p>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a href="#" class="btn btn-danger d-block">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 ">
+          <div class="card h-100">
+            <a href="#" class="mt-2">
+              <img class="card-img-top burger" src="./images/BLT-BURGER.png" alt="Card image cap">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">BLT Burger</h5>
+              <p class="card-text">THINGRADO THANGRADO YENGA AATHAR THOONGRAR</p>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a href="#" class="btn btn-danger d-block">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deal-of-the-day">
+      <div class="deal"></div>
+      <div class="deal"></div>
+      <div class="deal"></div>
+    </div>
+  </section>
+  <section id="testimonials">
+
+    <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item container-fluid">
+          <h2 class="testimonial-text">My sons and daughter have each celebrated thier birthdays with smiles and the
+            need for more!</h2>
+          <img class="testimonial-image" src="images/asma.jpg" alt="dog-profile">
+          <em>Asma</em>
+        </div>
+        <div class="carousel-item container-fluid active">
+          <h2 class="testimonial-text">The Grill Thrill has to be by far the best burger this city has to offer!</h2>
+          <img class="testimonial-image" src="images/harni.jfif" alt="lady-profile">
+          <em>Harni</em>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+  </section>
+
+  <footer id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fa-brands fa-facebook-f"></i>
+      <i class="social-icon fa-brands fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 BRRRGRRR</p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src ="/js/home.js"></script>
+
+</body>
+
+</html>
