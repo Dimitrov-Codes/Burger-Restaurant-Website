@@ -23,21 +23,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-    <a class="navbar-brand ms-4" href="#"><img id="logo" src="./images/logo.png" alt="" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav navbar-items ms-4">
-        <a class="nav-item nav-link" href="/">Home</a>
-        <a class="nav-item nav-link text-danger" href="#menu">Menu</a>
-        <a class="nav-item nav-link text-danger" href="order">Order Now</a>
-        <a class="nav-item nav-link text-danger" href="login">Login</a>
-      </div>
-    </div>
-  </nav>
+  <%- include('partials/header'); -%>
 
   <div class="container-fluid">
     <div class="row">
@@ -92,6 +78,8 @@
       </div>
     </div>
   </div>
+  <%- include('partials/footer'); -%>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
   integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

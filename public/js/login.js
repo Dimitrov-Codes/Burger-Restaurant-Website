@@ -15,9 +15,3 @@ $("#s-link").click((e)=>{
     $(".login-form").fadeOut();
 })
 
-// let phone;
-// let appVerifier;
-// $("#login").click((e)=>{
-//     phone = $("#phLogin").val();
-//     fetch("/auth?no=" + phone).then(r=>{return r.json()}).then(fetch("/"));
-// })

@@ -11,6 +11,7 @@ const csurf = require("csurf");
 let admin = require("firebase-admin");
 let serviceAccount = require("brrrgrrr-30225-firebase-adminsdk-czh5h-0db6511c5c.json");
 const e = require("express");
+const { auth , getAuth } = require("firebase-admin");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -83,12 +84,13 @@ app.get("/add", (req, res) => {
 });
 
 app.post("/sessionLogin", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const idToken = req.body.idToken.toString();
   const name = req.body.name;
   const email = req.body.email;
   const address = req.body.address;
   const uid = req.body.uid;
+  console.log(idToken);
 
   const expiresIn = 60 * 60 * 24 * 5 * 1000;
 
@@ -99,22 +101,16 @@ app.post("/sessionLogin", (req, res) => {
       (sessionCookie) => {
         const options = { maxAge: expiresIn, httpOnly: true };
         res.cookie("session", sessionCookie, options);
-        res.end(JSON.stringify({ status: "success" }));
+        res.send({ status: "success" });
         if (uid !== undefined) {
           rdb
-            // .child("users")
             .orderByChild("users")
             .equalTo(uid)
             .once("value", (snapshot) => {
               if (snapshot.exists()) {
                 console.log("exists!");
               } else {
-                rdb.child("users").set({
-                  [uid]: {
-                    name,
-                    address,
-                  },
-                });
+                rdb.child("users/" + uid).set({ name, address });
               }
             });
         }
@@ -139,9 +135,9 @@ app.get("/profile", function (req, res) {
     .then((userData) => {
       console.log("------------LOGIN DATA -----------------");
       console.log("Logged in:", userData);
-      console.log(userData.displayName)
+      console.log("Display Name:" + userData.displayName);
       rdb
-        .child("users") 
+        .child("users")
         .child(userData.uid)
         .get()
         .then((snapshot) => {
@@ -149,17 +145,17 @@ app.get("/profile", function (req, res) {
             console.log("exists!");
             console.log(snapshot);
             snapshot = snapshot.val();
-            console.log(snapshot)
+            console.log(snapshot);
             res.render("profile.ejs", {
               data: {
-                name: snapshot.name,
+                name: userData.name,
                 password: userData.password,
                 email: userData.email,
                 address: snapshot.address,
               },
             });
           } else {
-            console.log(snapshot.val());
+            console.log("Snapshot does not exist (value)-> " + snapshot.val());
             res.redirect("/login");
           }
         });
@@ -168,4 +164,20 @@ app.get("/profile", function (req, res) {
       console.log(error);
       res.redirect("/login");
     });
+});
+
+app.post("/updateProfile", (req, res) => {
+  console.log(req.body);
+  admin.auth().updateUser(req.body.uid, {
+    displayName: req.body.name,
+  })
+  .then((userRecord) => {
+    res.end(JSON.stringify({status:"success"}));
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log('Successfully updated user', userRecord.toJSON());
+  })
+  .catch((error) => {
+    console.log('Error updating user:', error);
+  });
+
 });

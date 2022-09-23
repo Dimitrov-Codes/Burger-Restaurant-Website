@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile page</title>
   <link rel="stylesheet" href="./mvp.css" />
 </head>
+
 <body>
-   <main> 
-     <h1>Profile page</h1>
-     <p>name: <%= data.name %></p>
-     <p>email:<%= data.email %> </p>
-     <p>password: <%= data.password %></p>
-     <p>address: <%= data.address %></p>
-     
-     <a href="/sessionLogout">Log out</a>
-   </main>
+  <main>
+    <h1>Profile page</h1>
+    <p>name: <%= data.name %>
+    </p>
+    <p>email:<%= data.email %>
+    </p>
+    <p>password: <%= data.password %>
+    </p>
+    <p>address: <%= data.address %>
+    </p>
+
+    <a href="/sessionLogout">Log out</a>
+  </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<script>
-  $("a").click((e)=>{localStorage.removeItem("userData")});
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDBbYqxTrmkp-lIZ3RpPAakDkq-yCtKhro",
+    authDomain: "brrrgrrr-30225.firebaseapp.com",
+    databaseURL: "https://brrrgrrr-30225-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "brrrgrrr-30225",
+    storageBucket: "brrrgrrr-30225.appspot.com",
+    messagingSenderId: "1025505294372",
+    appId: "1:1025505294372:web:42ea9791e2a12c2ead00b1",
+    measurementId: "G-6BEXHLB17H"
+  };
+  const firebase = initializeApp(firebaseConfig)
+  const auth = getAuth(firebase);
+  $("a").click((e) => { auth.signOut()});
 </script>
+
 </html>

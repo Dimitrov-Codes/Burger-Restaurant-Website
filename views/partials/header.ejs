@@ -13,38 +13,53 @@
     </div>
     <div>
       <!-- <img id="userImage" src="" alt=""> -->
-      <h6 id="user"class="text-light me-5">Welcome <a id="username" class="nav-item nav-link d-inline" href="/profile"></a></h6>
+      <h5 id="user" class="text-light me-5"></h5>
     </div>
   </div>
 </nav>
 
-<script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
-  $("#username").hover(()=> {
-      // over
-      $("#username").addClass("link-light");
-      $("#username").removeClass("nav-link")
-      
-    }, ()=> {
-      // out
-      $("#username").addClass("nav-link")
 
-      $("#username").removeClass("link-light")
+  const firebaseConfig = {
+    apiKey: "AIzaSyDBbYqxTrmkp-lIZ3RpPAakDkq-yCtKhro",
+    authDomain: "brrrgrrr-30225.firebaseapp.com",
+    databaseURL: "https://brrrgrrr-30225-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "brrrgrrr-30225",
+    storageBucket: "brrrgrrr-30225.appspot.com",
+    messagingSenderId: "1025505294372",
+    appId: "1:1025505294372:web:42ea9791e2a12c2ead00b1",
+    measurementId: "G-6BEXHLB17H"
+  };
+  const firebase = initializeApp(firebaseConfig)
+  const auth = getAuth(firebase);
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      // User is signed in.
+      console.log(user);
+
+      $("#user").html(`Welcome <a id="username" class="nav-item nav-link d-inline"href="/profile">${auth.currentUser.displayName}</a>`);
+      $("#login").hide();
+      $("#username").hover(() => {
+        // over
+        $("#username").addClass("link-light");
+        $("#username").removeClass("nav-link")
+
+      }, () => {
+        // out
+        $("#username").addClass("nav-link")
+
+        $("#username").removeClass("link-light")
+      }
+      );
+    } else {
+      console.log("ASIDJASODASJ")
+      // No user is signed in.
+      $("#user").hide();
     }
-  );
-  const user = JSON.parse(localStorage.getItem('userData'));
-  console.log(user);
-  if (user !== null) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    // const uid = user.uid;
-    $("#username").html(user.displayName);
-    $("#login").hide();
-    // ...
-  } else {
-    // User is signed out
-    // ...
-    $("#user").hide();
-  }
+  });
+
 
 </script>
