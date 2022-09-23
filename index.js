@@ -58,7 +58,7 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.render("index.ejs");
 });
 
 app.get("/login", (req, res) => {
@@ -127,7 +127,7 @@ app.post("/sessionLogin", (req, res) => {
 });
 app.get("/sessionLogout", (req, res) => {
   res.clearCookie("session");
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 app.get("/profile", function (req, res) {

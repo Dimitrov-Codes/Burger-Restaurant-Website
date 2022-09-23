@@ -17,4 +17,9 @@
      <a href="/sessionLogout">Log out</a>
    </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script>
+  $("a").click((e)=>{localStorage.removeItem("userData")});
+</script>
 </html>
