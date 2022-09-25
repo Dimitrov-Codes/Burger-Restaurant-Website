@@ -28,7 +28,6 @@ function add(id) {
                                     <img src="${item.img}" alt="F" />
                                     <div class="item-details d-inline-block">
                                         <h5 class="d-inline-block item-name">${item.name}</h5>
-                                        <p class="item-desc">${item.desc}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-around">
@@ -36,7 +35,7 @@ function add(id) {
                                         <button class="btn ms-1 p-0" onclick="add('${id}')">
                                             <i class="fa-solid fa-square-plus"></i>
                                         </button>
-                                        <input type="text" class="quantity w-25 h-75 text-center" value="1" />
+                                        <input type="text" class="quantity form-check-input w-25 h-75 text-center" value="1" readonly />
                                         <button class="btn p-0" onclick="remove('${id}')">
                                             <i class="fa-solid fa-square-minus"></i>
                                         </button>
@@ -68,7 +67,7 @@ function remove(id) {
     console.log(index);
     total = parseFloat((total - items[index].price).toFixed(2));
 
-    $("#subtotal").html(total);
+    $("#subtotal").html("₹" +total);
     if (parseInt($(".quantity")[index].value) - 1 === 0) {
         $(".item")[index].remove();
         items.splice(index,1);

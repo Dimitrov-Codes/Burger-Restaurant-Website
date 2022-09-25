@@ -109,20 +109,27 @@ h1,h2{
     
 }
 .cart-form{
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(245, 240, 240);
     position: sticky;
     top:11rem;
     max-height: 70vh;
     overflow-y: auto;
     border-top: 4px solid rgb(3, 190, 3);
     padding: 10px;
+    margin: 3rem 0;
     
 }
 .cart i{
     font-size: 2rem;
+
+}
+.cart button:hover{
+    border-color:rgb(245, 240, 240);
+}
+.quantity{
+    width:auto;
 }
 .item img{
-    max-height: 4.2rem;
-    position: relative;
-    top:-18px
+    max-height: 4.3rem;
+    margin:1rem;
 }

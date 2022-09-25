@@ -25,27 +25,28 @@
 <body>
   <section id="landing-page">
     <%-include("partials/header") %>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-4 mt-5">
-          <h1>
-            Single Patty
-          </h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo autem at ab? Magnam natus facilis facere sed.
-            Exercitationem veniam </p>
-          <button class="btn btn-danger">Order Now</button>
-        </div>
-        <div class="col-md-4">
-          <img id="single-patty" src="./images/LandingImage-Burger.png">
-        </div>
-        <div class="col-md-4 mt-5">
-          <p class="b-desc1">Sassy Burger</p>
-          <p class="b-desc2">Our best selling saucy burger</p>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-4 mt-5">
+            <h1>
+              Single Patty
+            </h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo autem at ab? Magnam natus facilis facere
+              sed.
+              Exercitationem veniam </p>
+            <button class="btn btn-danger">Order Now</button>
+          </div>
+          <div class="col-md-4">
+            <img id="single-patty" src="./images/LandingImage-Burger.png">
+          </div>
+          <div class="col-md-4 mt-5">
+            <p class="b-desc1">Sassy Burger</p>
+            <p class="b-desc2">Our best selling saucy burger</p>
+          </div>
         </div>
       </div>
-    </div>
   </section>
-  <section class="menu" class="mb-5 pb-5 pt-5">
+  <section id="menu" class="menu mb-5 pb-5 pt-5">
     <p id="specials">Our specials</p>
     <h1>Dine In + Delivery</h1>
     <div class="container mb-5 mt-5">
@@ -60,7 +61,7 @@
               <p class="card-text">Juicy chicken burger topped with cheddar cheese Dynamo sauce</p>
             </div>
             <div class="card-footer bg-transparent">
-              <a href="#" class="btn btn-danger d-block">Order</a>
+              <a href="order" class="btn btn-danger d-block">Order</a>
             </div>
           </div>
         </div>
@@ -71,10 +72,11 @@
             </a>
             <div class="card-body">
               <h5 class="card-title">BLT Burger</h5>
-              <p class="card-text">THINGRADO THANGRADO YENGA AATHAR THOONGRAR</p>
+              <p class="card-text">Loaded with smoked BLT barbeque sauce and sweet onions, Every bite is a flavour trip!
+              </p>
             </div>
             <div class="card-footer bg-transparent">
-              <a href="#" class="btn btn-danger d-block">Order</a>
+              <a href="order" class="btn btn-danger d-block">Order</a>
             </div>
           </div>
         </div>
@@ -112,16 +114,16 @@
     </div>
 
   </section>
-<%- include('partials/footer'); -%>
-  
-  
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-  <script src ="/js/home.js"></script>
+  <%- include('partials/footer'); -%>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
 
 </body>
 

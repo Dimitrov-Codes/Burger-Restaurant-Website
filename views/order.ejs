@@ -26,7 +26,7 @@
   <%- include('partials/header'); -%>
 
     <div class="container-fluid">
-      <div class="row">
+      <div class="row mt-4 p-2">
         <div class="menu col-lg-9">
           <div class="row">
 
@@ -38,12 +38,12 @@
             </div>
           </div>
 
-          <div class="row mb-3">
+          <div class="row mt-2 p-3">
             <% burgers.forEach((i,index)=>{%>
 
               <div class="col-lg-4">
-                <div class="card mt-4 p-2  menu-item h-100">
-                  <a href="#" class="mt-2">
+                <div class="card menu-item h-100">
+                  <a class="mt-2">
                     <img class="card-img-top burger" src="<%=i.img%>" alt="Card image cap" />
                   </a>
                   <div class="card-body">
@@ -57,7 +57,7 @@
                   <div class="card-footer bg-transparent d-flex justify-content-around">
                     <h3 class="price d-inline-block">₹ <%=i.price%>
                     </h3>
-                    <button class="btn btn-danger d-inline-block h-75" onclick="add('<%=i.id%>')">
+                    <button class="btn btn-danger d-inline-block" onclick="add('<%=i.id%>')">
                       <i class="feature-image fa-solid fa-shopping-cart"></i>Add to cart
                     </button>
                   </div>
@@ -65,7 +65,7 @@
               </div>
               <% if ((index)%3==2) { %>
           </div>
-          <div class="row mb-2">
+          <div class="row mt-2 p-3">
           <% } %>
             <%})%>
           </div>
