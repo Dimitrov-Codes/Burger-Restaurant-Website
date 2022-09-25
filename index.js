@@ -8,7 +8,7 @@ const csurf = require("csurf");
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 let admin = require("firebase-admin");
-let serviceAccount = require("brrrgrrr-30225-firebase-adminsdk-czh5h-0db6511c5c.json");
+let serviceAccount = require("./brrrgrrr-30225-firebase-adminsdk-czh5h-0db6511c5c.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -31,7 +31,6 @@ function refreshBurgerData() {
       i.docs.forEach((j) => {
         let obj = j.data();
         obj.id = j.id;
-        console.log(obj);
         burgers.push(obj);
       });
     })
@@ -73,7 +72,7 @@ app.listen(process.env.PORT || 3000, () => {
   console.log("http://localhost:3000");
 });
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { 
   res.render("index.ejs");
 });
 
