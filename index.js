@@ -1,7 +1,6 @@
 let express = require("express");
 const bp = require("body-parser");
 const app = express();
-const ejs = require("ejs");
 const cp = require("cookie-parser");
 const csurf = require("csurf");
 
@@ -10,8 +9,6 @@ const csurf = require("csurf");
 
 let admin = require("firebase-admin");
 let serviceAccount = require("brrrgrrr-30225-firebase-adminsdk-czh5h-0db6511c5c.json");
-const e = require("express");
-const { auth , getAuth } = require("firebase-admin");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -25,7 +22,7 @@ const db = admin.firestore();
 const rdb = admin.database().ref("/");
 
 let burgers = [];
-
+// 
 //Obtain data about current menu
 function refreshBurgerData() {
   db.collection("burgers")
@@ -110,7 +107,7 @@ app.post("/sessionLogin", (req, res) => {
               if (snapshot.exists()) {
                 console.log("exists!");
               } else {
-                rdb.child("users/" + uid).set({ name, address });
+                rdb.child("users/" + uid).set({ address });
               }
             });
         }
@@ -168,16 +165,65 @@ app.get("/profile", function (req, res) {
 
 app.post("/updateProfile", (req, res) => {
   console.log(req.body);
-  admin.auth().updateUser(req.body.uid, {
-    displayName: req.body.name,
-  })
-  .then((userRecord) => {
-    res.end(JSON.stringify({status:"success"}));
-    // See the UserRecord reference doc for the contents of userRecord.
-    console.log('Successfully updated user', userRecord.toJSON());
-  })
-  .catch((error) => {
-    console.log('Error updating user:', error);
-  });
-
+  admin
+    .auth()
+    .updateUser(req.body.uid, {
+      displayName: req.body.name,
+    })
+    .then((userRecord) => {
+      res.end(JSON.stringify({ status: "success" }));
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log("Successfully updated user", userRecord.toJSON());
+    })
+    .catch((error) => {
+      console.log("Error updating user:", error);
+    });
 });
+
+
+
+
+
+
+
+
+// const listAllUsers = (nextPageToken) => {
+  //   // List batch of users, 1000 at a time.
+  //   admin
+  //     .auth()
+  //     .listUsers(1000, nextPageToken)
+  //     .then((listUsersResult) => {
+  //       let users=[];
+  //       listUsersResult.users.forEach((userRecord) => {
+  //         console.log("user", userRecord.toJSON().uid);
+  //         users.push(userRecord.toJSON().uid);
+  //       });
+  //       admin
+  //         .auth()
+  //         .deleteUsers(users)
+  //         .then((deleteUsersResult) => {
+  //           console.log(
+  //             `Successfully deleted ${deleteUsersResult.successCount} users`
+  //           );
+  //           console.log(
+  //             `Failed to delete ${deleteUsersResult.failureCount} users`
+  //           );
+  //           deleteUsersResult.errors.forEach((err) => {
+  //             console.log(err.error.toJSON());
+  //           });
+  //         })
+  //         .catch((error) => {
+  //           console.log("Error deleting users:", error);
+  //         });
+  
+  //       if (listUsersResult.pageToken) {
+  //         // List next batch of users.
+  //         listAllUsers(listUsersResult.pageToken);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error listing users:", error);
+  //     });
+  // };
+  // // Start listing users from the beginning, 1000 at a time.
+  // listAllUsers();
