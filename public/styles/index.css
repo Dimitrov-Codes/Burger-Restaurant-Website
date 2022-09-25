@@ -50,7 +50,8 @@ h1,h2{
     border-radius: 5%;
 }
 .burger{
-    width:50%;
+    max-width: 146.875px;
+    min-width:50%;
     height: auto;
 }
 

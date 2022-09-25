@@ -37,9 +37,9 @@
             <label for="password" class="ph mb-2">Password</label>
             <input id="password" name="password" class="form-control form-control-lg mb-4" type="password" required>
 
-            <div id="captcha" class="mb-2">
+            <h5 id="error" class="mb-4 text-danger text-lg-center ">
 
-            </div>
+            </h6>
             <button class="btn btn-danger btn-lg px-5">Log in</button>
             <p class="ms-5 link-secondary d-inline-block">Dont have an account? <a href="javascript: void(0)"
                     id="s-link">sign up</a></p>
@@ -82,7 +82,7 @@
         <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence,browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -125,7 +125,12 @@
                                 // New sign-in will be persisted with session persistence. 
 
                                 return signInWithEmailAndPassword(auth, email, password);
+                            })  
+                            .catch((error) => {
+                                $("#error").html("Error! e-mail or password is incorrect")
+                                throw "Error";
                             })
+
                             .then(({ user }) => {
                                 // user.displayName = name
                                 // localStorage.setItem('userData', JSON.stringify(user));
@@ -140,11 +145,11 @@
                                             },
                                             body: JSON.stringify({ idToken }),
                                         });
-                                    } );
+                                    });
                             })
                             .then(() => {
                                 window.location.assign("/");
-                            });
+                            })
                     });
 
             });

@@ -13,10 +13,10 @@ function add(id) {
             }
             item = details;
             total = parseFloat((total + item.price).toFixed(2));
-            let itemExists = items.some((k,i)=>{
+            let itemExists = items.some((k, i) => {
                 index = i;
-                return(k.id === item.id);
-                
+                return (k.id === item.id);
+
             })
 
             if (!itemExists) {
@@ -25,7 +25,7 @@ function add(id) {
                     `
                             <div class="item">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <img src="/images/${item.img}" alt="F" />
+                                    <img src="${item.img}" alt="F" />
                                     <div class="item-details d-inline-block">
                                         <h5 class="d-inline-block item-name">${item.name}</h5>
                                         <p class="item-desc">${item.desc}</p>
@@ -33,26 +33,51 @@ function add(id) {
                                 </div>
                                 <div class="d-flex justify-content-around">
                                     <div class="control-quantity">
-                                        <button class="btn ms-1 p-0" type="">
+                                        <button class="btn ms-1 p-0" onclick="add('${id}')">
                                             <i class="fa-solid fa-square-plus"></i>
                                         </button>
                                         <input type="text" class="quantity w-25 h-75 text-center" value="1" />
-                                        <button class="btn p-0" type="">
+                                        <button class="btn p-0" onclick="remove('${id}')">
                                             <i class="fa-solid fa-square-minus"></i>
                                         </button>
                                     </div>
-                                    <h4 class="price">$${item.price}</h4>
+                                    <h4 class="price">₹${item.price}</h4>
                                 </div>
+                                <hr>                  
                             </div>           
-                            <hr>                  
                             `);
-                $("#subtotal").html(total);
-
+                
+                
             }
             else {
-                $("#subtotal").html(total);
                 $(".quantity")[index].value = parseInt($(".quantity")[index].value) + 1;
             }
+            $("#subtotal").html("₹" + total);
         }).catch((er) => { console.log(er) });
+        // console.log(items);
 
+}
+
+function remove(id) {
+    let index;
+    items.find((o, i) => {
+        if (o.id == id) {
+            index = i;
+        }
+    });
+    console.log(index);
+    total = parseFloat((total - items[index].price).toFixed(2));
+
+    $("#subtotal").html(total);
+    if (parseInt($(".quantity")[index].value) - 1 === 0) {
+        $(".item")[index].remove();
+        items.splice(index,1);
+
+        if(items.length === 0){
+            $(".cart-form").hide();
+        }
+    } else {
+
+        $(".quantity")[index].value = parseInt($(".quantity")[index].value) - 1;
+    }
 }

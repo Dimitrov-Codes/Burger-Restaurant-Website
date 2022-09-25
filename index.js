@@ -20,7 +20,7 @@ const csrfMiddleware = csurf({ cookie: true });
 
 const db = admin.firestore();
 const rdb = admin.database().ref("/");
-
+const storage = admin.storage();
 let burgers = [];
 // 
 //Obtain data about current menu
@@ -31,6 +31,7 @@ function refreshBurgerData() {
       i.docs.forEach((j) => {
         let obj = j.data();
         obj.id = j.id;
+        console.log(obj);
         burgers.push(obj);
       });
     })
@@ -38,6 +39,23 @@ function refreshBurgerData() {
 }
 refreshBurgerData();
 
+async function addBurgers(){
+  bgs = [{type:"nv",name:"BLT Burger", price:210.0,desc:"Bacon, lettuce and tomato meet a grilled burger patty topped with Heluva Good Bacon Horseradish Dip to make each bite extra lipsmacking",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/BLT-BURGER.png?alt=media&token=37d55882-f10f-4964-a18c-173a179d586a"},
+  {type:"nv",name:"Cheese Grilled Lamb Burger", price:250.0,desc:"tender and delicious Lamb lightly seasoned with shallots and garlic powder. And topped with smoked Gouda cheese .",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/cheese_grilled_lamb_burger.png?alt=media&token=3f9e0f6d-f165-4aff-a0d3-b23709505420"},
+  {type:"nv",name:"Chicken Burger", price:210.0,desc:"These burgers are loaded with tender & succulent chicken patties, dressed with a simple sauce",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/chicken_burger.png?alt=media&token=f8cb0042-7edb-4166-a839-4b7b73be48a4"},
+  {type:"nv",name:"Crab Burger", price:250.0,desc:"Perfectly seasoned and grilled ground beef patty topped with delicate crab meat in a light, flavorful sauce.",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/crab_burger.png?alt=media&token=ed28ef0a-afea-48a8-ae02-c601eaf0de9e"},
+  {type:"nv",name:"Fish Burger", price:220.0,desc:"Crispy fish burger with easy garlic lemon mayo and a pile of crispy and totally addictive shoestring fries",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/fish_burger.png?alt=media&token=3a50e309-3539-4343-991e-302576013790"},
+  {type:"nv",name:"Classic Lamb Burger", price:210.0,desc:"These succulent, juicy patties are packed full of flavour topped with cool, creamy mint yogurt.",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/juicy_lamb_burger.png?alt=media&token=dd5428cf-6357-43b5-bc2b-5c479a9c1df1"},
+  {type:"nv",name:"Mexican Twist", price:230.0,desc:"It's smokey, it's spicy and it's loaded with your favourite Mexican toppings like guac and salsa,",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/Mexican-Twist.png?alt=media&token=f55beb1f-eda4-49cc-9046-4ffe51788372"},
+  {type:"nv",name:"Salmon Burger", price:230.0,desc:"Topped with melty Havarti & caramelized onions and seasoned with Old Bay, these salmon burgers are the best ever! ",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/salmon_burger.png?alt=media&token=8d89bdff-f549-46ab-b890-7eb77cbccba6"},
+  {type:"nv",name:"Shrimp Burger", price:250.0,desc:"Crispy shrimp patties and melted cheese wrapped around buttery brioche buns to give a burst of flavor in every bite.",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/shrimp_burger-removebg-preview.png?alt=media&token=da63886b-c1d6-4fb1-9617-e283e5e4192c"},
+  {type:"nv",name:"Tuna Burger", price:250.0,desc:"Inspired by Asian flavors,These ahi tuna burgers are packed with green onions, fresh ginger, soy sauce and a dollop spicy mayo! ",img:"https://firebasestorage.googleapis.com/v0/b/brrrgrrr-30225.appspot.com/o/tuna_burger.png?alt=media&token=dd2f94fd-28f5-41a9-ac86-fc01249c9e44"}]
+  for(let i of bgs){
+    let j = JSON.parse(JSON.stringify(i));
+    await db.collection("burgers").add(j);
+    console.log("added : " + j);
+  }
+}
 app.use(bp.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cp());
