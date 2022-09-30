@@ -9,7 +9,7 @@
       <a class="nav-item nav-link" href="/">Home</a>
       <!-- <a class="nav-item nav-link text-danger" href="#menu">Menu</a> -->
       <a class="nav-item nav-link text-danger" href="order">Order Now</a>
-      <a id="login" class="nav-item nav-link text-danger" href="create">Make Your Own!</a>
+      <a class="nav-item nav-link text-danger" href="create">Make Your Own!</a>
       <a id="login" class="nav-item nav-link text-danger" href="login">Login</a>
 
     </div>
@@ -40,6 +40,7 @@
   auth.onAuthStateChanged((user) => {
     if (user) {
       // User is signed in.
+      window.currentUser = user;
       console.log(user);
 
       $("#user").html(`Welcome <a id="username" class="nav-item nav-link d-inline"href="/profile">${auth.currentUser.displayName}</a>`);

@@ -39,10 +39,10 @@
 
             <h5 id="error" class="mb-4 text-danger text-lg-center ">
 
-            </h6>
-            <button class="btn btn-danger btn-lg px-5" type="submit">Log in</button>
-            <p class="ms-auto text-lg-end accordion d-inline-block">Dont have an account? <a href="javascript: void(0)"
-                    id="s-link">sign up</a></p>
+                </h6>
+                <button class="btn btn-danger btn-lg px-5" type="submit">Log in</button>
+                <p class="ms-auto text-lg-end accordion d-inline-block">Dont have an account? <a
+                        href="javascript: void(0)" id="s-link">sign up</a></p>
         </form>
     </div>
     <div class="signup-form bg-white">
@@ -82,7 +82,8 @@
         <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+            import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -125,13 +126,18 @@
                                 // New sign-in will be persisted with session persistence. 
 
                                 return signInWithEmailAndPassword(auth, email, password);
-                            })  
+                            })
                             .catch((error) => {
                                 $("#error").html("Error! e-mail or password is incorrect")
                                 throw "Error";
                             })
 
                             .then(({ user }) => {
+                                const dbRef = ref(getDatabase(app));
+                                get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+                                    console.log(snapshot.val())
+                                    sessionStorage.setItem("address",snapshot.val().address)
+                                })
                                 // user.displayName = name
                                 // localStorage.setItem('userData', JSON.stringify(user));
                                 return user.getIdToken()
@@ -148,6 +154,7 @@
                                     });
                             })
                             .then(() => {
+
                                 window.location.assign("/");
                             })
                     });

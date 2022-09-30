@@ -2,6 +2,10 @@ let items = [];
 let item;
 let total = 0;
 let index;
+
+
+$("a").click((e) => { auth.signOut() });
+
 $(".cart-form").hide()
 function add(id, type = "burger") {
     let url = "/getBurgerData?id=" + id;
@@ -88,11 +92,16 @@ function remove(id) {
     }
 }
 
-function checkout(){
-    items = items.map(i=>JSON.stringify(i));
+function checkout() {
+
+    // items = items.map(i => JSON.stringify(i));
     console.log(items);
-    sessionStorage.setItem("cart", items);
-    window.location.assign("checkout");
+    sessionStorage.setItem("cart",JSON.stringify(items));
+    if (window.currentUser !== null) {
+        window.location.assign("checkout");
+    }else{
+        window.location.assign("/login?cartRedirect=true");
+    }
 }
 
 
