@@ -148,16 +148,16 @@ app.listen(process.env.PORT || 3000, () => {
 });
 
 app.get("/", (req, res) => { 
-  res.render("index.ejs");
+  res.render("index.ejs",{link_color:"link-light", text_color:"text-light"});
 });
 app.get("/checkout",(req,res)=>{
-  res.render("checkout.ejs");
+  res.render("checkout.ejs",{link_color:"link-dark", text_color:"text-dark"});
 });
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/login.html");
 });
 app.get("/order", (req, res) => {
-  res.render("order.ejs", { burgers: burgers });
+  res.render("order.ejs", { burgers: burgers,link_color:"link-dark", text_color:"text-dark"});
 });
 app.get("/create",(req,res)=>{
   res.render("create.ejs", {buns : ingredients.buns,
@@ -166,10 +166,12 @@ app.get("/create",(req,res)=>{
                             sauces:ingredients.sauces,
                             cheese:ingredients.cheese,
                             fillers:ingredients.fillers,
+                            link_color:"link-dark",
+                            text_color:"text-dark"
                           })
 })
 app.get("/success", (req, res) => {
-  res.render("success.ejs");
+  res.render("success.ejs",{link_color:"link-dark", text_color:"text-dark"});
 });
 //Complex Login page Requests
 app.post("/sessionLogin", (req, res) => {
@@ -232,6 +234,8 @@ app.get("/profile", function (req, res) {
                 password: userData.password,
                 email: userData.email,
                 address: snapshot.address,
+                link_color:"link-dark", 
+                text_color:"text-dark"
               },
             });
           } else {
@@ -268,15 +272,20 @@ app.get("/getIngredientData", (req, res) => {
   }
 });
 app.post("/updateProfile", (req, res) => {
+  console.log(req.body.uid);
+  let uid = req.body.uid;
   admin
     .auth()
-    .updateUser(req.body.uid, {
+    .updateUser(uid, {
       displayName: req.body.name,
+      email: req.body.email,
     })
     .then((userRecord) => {
-      res.end(JSON.stringify({ status: "success" }));
+      return rdb.child("users/" + uid).update({ address:req.body.address })
       // See the UserRecord reference doc for the contents of userRecord.
-      console.log("Successfully updated user", userRecord.toJSON());
+    }).then((userRecord)=>{
+      res.end(JSON.stringify({ status: "success" }));
+      console.log("Successfully updated user", );
     })
     .catch((error) => {
       console.log("Error updating user:", error);

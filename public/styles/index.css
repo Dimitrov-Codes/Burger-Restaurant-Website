@@ -177,6 +177,6 @@ h2 {
     margin:auto;
     padding:1rem;
     border:2px solid rgb(182, 182, 182);
-    border-radius: 5%;
+    border-radius: 25px;
     background-color: white;
 }

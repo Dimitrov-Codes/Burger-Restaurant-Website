@@ -15,7 +15,7 @@
     </div>
     <div>
       <!-- <img id="userImage" src="" alt=""> -->
-      <h5 id="user" class="text-light me-5"></h5>
+      <h5 id="user" class="me-5 <%=link_color%>"></h5>
     </div>
   </div>
 </nav>
@@ -43,17 +43,17 @@
       window.currentUser = user;
       console.log(user);
 
-      $("#user").html(`Welcome <a id="username" class="nav-item nav-link d-inline"href="/profile">${auth.currentUser.displayName}</a>`);
       $("#login").hide();
+      $("#user").html(`Welcome <a id="username" class="nav-item nav-link d-inline" href="/profile">${auth.currentUser.displayName}</a>`);
       $("#username").hover(() => {
         // over
-        $("#username").addClass("link-light");
+        $("#username").addClass(`<%=link_color%>`);
         $("#username").removeClass("nav-link")
 
       }, () => {
         // out
         $("#username").addClass("nav-link")
-        $("#username").removeClass("link-light")
+        $("#username").removeClass("`<%=link_color%>`")
       }
       );
     } else {
